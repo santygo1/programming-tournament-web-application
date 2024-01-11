@@ -1,0 +1,51 @@
+CREATE TABLE IF NOT EXISTS task(
+	task_id INTEGER PRIMARY KEY AUTOINCREMENT ,
+	task_condition VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS tournament(
+	tournament_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	title VARCHAR(30) NOT NULL,
+	created_at DATE DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE IF NOT EXISTS tutor(
+	tutor_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name VARCHAR(30) NOT NULL,
+	email VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS member(
+	member_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name VARCHAR(30) NOT NULL,
+	email VARCHAR(30) NOT NULL,
+	age INTEGER,
+	CONSTRAINT age_must_be_positive CHECK(age >= 0) 
+);
+
+CREATE TABLE IF NOT EXISTS test(
+	test_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+	task_id INTEGER REFERENCES task(task_id) ON DELETE CASCADE,
+	input VARCHAR(30) NOT NULL,
+	output VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS tournament_task(
+	tournament_task_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+	tournament_id INTEGER REFERENCES tournament(tournament_id) ON DELETE CASCADE, 
+	task_id INTEGER REFERENCES task(task_id) ON DELETE CASCADE,
+	duration_minutes INTEGER DEFAULT 60,
+	CONSTRAINT duration_must_be_positive CHECK(duration_minutes >= 0) 
+);
+
+CREATE TABLE IF NOT EXISTS tutor_tournament(
+	tutor_tournament_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+	tutor_id INTEGER REFERENCES tutor(tutor_id) ON DELETE CASCADE,
+	tournament_id INTEGER REFERENCES tournament(tournament_id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS tournament_member(
+	tournament_member_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	member_id INTEGER REFERENCES member(member_id) ON DELETE CASCADE,
+	tournament_id INTEGER REFERENCES tournament(tournament_id) ON DELETE CASCADE
+);
