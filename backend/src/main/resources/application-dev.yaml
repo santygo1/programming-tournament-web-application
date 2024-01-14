@@ -1,0 +1,17 @@
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:devdb
+    username: dev
+    password: password
+  jpa:
+    # Сначала hibernate делает инициализацию потом вставку из data.sql
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+server:
+  tomcat:
+    accesslog:
+      enabled: true
