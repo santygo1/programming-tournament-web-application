@@ -1,0 +1,16 @@
+.CardPreview {
+}
+
+.body{
+    border: solid white 1px;
+    border-radius: 20px;
+    transition: .3s ease all;
+}
+.body > *{
+    padding: 5px;
+}
+
+.body:hover{
+    cursor: pointer;
+    box-shadow: 0 0 10px 5px #a848e0;
+}

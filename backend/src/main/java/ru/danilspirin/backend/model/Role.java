@@ -1,4 +1,4 @@
-package ru.danilspirin.backend.auth;
+package ru.danilspirin.backend.model;
 
 public enum Role {
     ROLE_ADMIN,

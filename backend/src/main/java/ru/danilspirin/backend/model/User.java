@@ -6,7 +6,6 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.danilspirin.backend.auth.Role;
 
 import java.util.Collection;
 import java.util.List;

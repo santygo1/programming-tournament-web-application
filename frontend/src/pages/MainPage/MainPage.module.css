@@ -1,0 +1,33 @@
+.MainPage {
+}
+
+.welcome{
+}
+
+.welcome .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info > div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    gap: 40px;
+}
+
+.achievments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    margin-left: 50px;
+}
+
+.possibilities{
+    margin-top: 100px;
+    display: flex;
+    gap: 20px;
+}

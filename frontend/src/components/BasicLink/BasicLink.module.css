@@ -1,0 +1,12 @@
+.BasicLink {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: .3s ease all;
+}
+
+.BasicLink:hover{
+    color: #b066f0;
+}
