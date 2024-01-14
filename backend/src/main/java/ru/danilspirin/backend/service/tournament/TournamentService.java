@@ -1,18 +1,18 @@
 package ru.danilspirin.backend.service.tournament;
 
-import ru.danilspirin.backend.model.enitiy.TournamentModel;
+import ru.danilspirin.backend.model.Tournament;
 
 import java.util.List;
 
 public interface TournamentService {
 
-    List<TournamentModel> getTournamentList();
+    List<Tournament> getTournamentList();
 
-    TournamentModel getTournament(Long tournamentId);
+    Tournament getTournament(Long tournamentId);
 
-    TournamentModel createTournament(TournamentModel tournament);
+    Tournament createTournament(Tournament tournament);
 
-    TournamentModel replaceTournament(Long tournamentId, TournamentModel tournamentToReplace);
+    Tournament replaceTournament(Long tournamentId, Tournament tournamentToReplace);
 
     void deleteTournament(Long tournamentId);
 }

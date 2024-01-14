@@ -1,4 +1,4 @@
-package ru.danilspirin.backend.model.enitiy;
+package ru.danilspirin.backend.model;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -16,7 +16,7 @@ import java.util.Set;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TournamentModel {
+public class Tournament {
 
     @Column(name = "tournament_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,7 @@ public class TournamentModel {
 
 
     @ManyToMany(mappedBy = "tournaments")
-    Set<UserModel> users;
+    Set<User> users;
 
     @ManyToMany
     @JoinTable(
@@ -39,5 +39,5 @@ public class TournamentModel {
             joinColumns = @JoinColumn(name = "tournament_id"),
             inverseJoinColumns = @JoinColumn(name = "task_id")
     )
-    Set<TaskModel> tasks;
+    Set<Task> tasks;
 }

@@ -2,7 +2,7 @@ package ru.danilspirin.backend.service.tournament;
 
 import org.springframework.stereotype.Service;
 import ru.danilspirin.backend.exception.tournament.TournamentNotFoundException;
-import ru.danilspirin.backend.model.enitiy.TournamentModel;
+import ru.danilspirin.backend.model.Tournament;
 import ru.danilspirin.backend.repository.TournamentRepository;
 
 import java.util.List;
@@ -20,13 +20,13 @@ public class TournamentServiceImpl implements TournamentService {
 
 
     @Override
-    public List<TournamentModel> getTournamentList() {
+    public List<Tournament> getTournamentList() {
         return tournamentRepository.findAll();
     }
 
     @Override
-    public TournamentModel getTournament(Long tournamentId) {
-        Optional<TournamentModel> findById = tournamentRepository.findById(tournamentId);
+    public Tournament getTournament(Long tournamentId) {
+        Optional<Tournament> findById = tournamentRepository.findById(tournamentId);
 
         if (findById.isEmpty()) {
             throw new TournamentNotFoundException(tournamentId);
@@ -36,12 +36,12 @@ public class TournamentServiceImpl implements TournamentService {
     }
 
     @Override
-    public TournamentModel createTournament(TournamentModel tournament) {
+    public Tournament createTournament(Tournament tournament) {
         return tournamentRepository.save(tournament);
     }
 
     @Override
-    public TournamentModel replaceTournament(Long tournamentId, TournamentModel tournamentToReplace) {
+    public Tournament replaceTournament(Long tournamentId, Tournament tournamentToReplace) {
         tournamentToReplace.setId(tournamentId);
         return tournamentRepository.save(tournamentToReplace);
     }

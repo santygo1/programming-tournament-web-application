@@ -1,7 +1,9 @@
 package ru.danilspirin.backend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.danilspirin.backend.model.enitiy.TestModel;
+import org.springframework.stereotype.Repository;
+import ru.danilspirin.backend.model.Test;
 
-public interface TestRepository extends JpaRepository<TestModel, Long> {
+@Repository
+public interface TestRepository extends JpaRepository<Test, Long> {
 }

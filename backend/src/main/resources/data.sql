@@ -47,8 +47,8 @@ VALUES (1, '5', '120'),
        (7, '12', '144');
 
 
-INSERT INTO "user" (name, email, password, role)
+INSERT INTO "user" (username, email, password, role)
 VALUES
-    ('admin', 'unknown', 'password', 'ADMIN'),
-    ('tutor', 'unknown', 'password', 'TUTOR'),
-    ('member', 'unknown', 'password', 'MEMBER')
+    ('admin', 'unknown', '$2a$12$PYxBhzAOwlq3RxYbpHCw9OEMoMwPTX7lm3EWQaQRNqVqwgSSCiHsy', 'ROLE_ADMIN'),
+    ('tutor', 'unknown', '$2a$12$tr.yF5fvuCGncFTwnjvmgeKLUjX978IKr5JGQUIBnktmMprJYK30.', 'ROLE_TUTOR'),
+    ('member', 'unknown', '$2a$12$DAPCqyFSbuguh50Ex4siPeZ73Pdxc.hLMs.ZC0Jy1tZ3uKYP4Q0nK', 'ROLE_MEMBER')

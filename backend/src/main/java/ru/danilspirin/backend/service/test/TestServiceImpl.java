@@ -2,7 +2,7 @@ package ru.danilspirin.backend.service.test;
 
 import org.springframework.stereotype.Service;
 import ru.danilspirin.backend.exception.test.TestNotFoundException;
-import ru.danilspirin.backend.model.enitiy.TestModel;
+import ru.danilspirin.backend.model.Test;
 import ru.danilspirin.backend.repository.TestRepository;
 
 import java.util.List;
@@ -20,13 +20,13 @@ public class TestServiceImpl implements TestService {
 
 
     @Override
-    public List<TestModel> getTestList() {
+    public List<Test> getTestList() {
         return testRepository.findAll();
     }
 
     @Override
-    public TestModel getTest(Long testId) {
-        Optional<TestModel> findById = testRepository.findById(testId);
+    public Test getTest(Long testId) {
+        Optional<Test> findById = testRepository.findById(testId);
 
         if (findById.isEmpty()) {
             throw new TestNotFoundException(testId);
@@ -36,12 +36,12 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public TestModel createTest(TestModel test) {
+    public Test createTest(Test test) {
         return testRepository.save(test);
     }
 
     @Override
-    public TestModel replaceTest(Long testId, TestModel testToReplace) {
+    public Test replaceTest(Long testId, Test testToReplace) {
         testToReplace.setId(testId);
         return testRepository.save(testToReplace);
     }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.danilspirin.backend.dto.tournament.ReadTournamentDto;
 import ru.danilspirin.backend.dto.tournament.WriteTournamentDto;
-import ru.danilspirin.backend.model.enitiy.TournamentModel;
+import ru.danilspirin.backend.model.Tournament;
 import ru.danilspirin.backend.service.tournament.TournamentService;
 
 import java.net.URI;
@@ -46,7 +46,7 @@ public class TournamentController {
     @PostMapping
     public ResponseEntity<ReadTournamentDto> createTournament(@RequestBody WriteTournamentDto tournamentToCreate) {
         ReadTournamentDto createdTournament = mapper.map(
-                tournamentService.createTournament(mapper.map(tournamentToCreate, TournamentModel.class)),
+                tournamentService.createTournament(mapper.map(tournamentToCreate, Tournament.class)),
                 ReadTournamentDto.class
         );
 
@@ -67,7 +67,7 @@ public class TournamentController {
             @RequestBody WriteTournamentDto tournamentToUpdate) {
 
         ReadTournamentDto updatedTournament = mapper.map(
-                tournamentService.replaceTournament(tournamentId, mapper.map(tournamentToUpdate, TournamentModel.class)),
+                tournamentService.replaceTournament(tournamentId, mapper.map(tournamentToUpdate, Tournament.class)),
                 ReadTournamentDto.class
         );
 

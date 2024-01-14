@@ -1,4 +1,4 @@
-package ru.danilspirin.backend.model.enitiy;
+package ru.danilspirin.backend.model;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TaskModel {
+public class Task {
 
     @Column(name = "task_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

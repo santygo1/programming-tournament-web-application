@@ -2,7 +2,7 @@ package ru.danilspirin.backend.service.task;
 
 import org.springframework.stereotype.Service;
 import ru.danilspirin.backend.exception.task.TaskNotFoundException;
-import ru.danilspirin.backend.model.enitiy.TaskModel;
+import ru.danilspirin.backend.model.Task;
 import ru.danilspirin.backend.repository.TaskRepository;
 
 import java.util.List;
@@ -20,13 +20,13 @@ public class TaskServiceImpl implements TaskService {
 
 
     @Override
-    public List<TaskModel> getTaskList() {
+    public List<Task> getTaskList() {
         return taskRepository.findAll();
     }
 
     @Override
-    public TaskModel getTask(Long taskId) {
-        Optional<TaskModel> findById = taskRepository.findById(taskId);
+    public Task getTask(Long taskId) {
+        Optional<Task> findById = taskRepository.findById(taskId);
 
         if (findById.isEmpty()) {
             throw new TaskNotFoundException(taskId);
@@ -36,12 +36,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskModel createTask(TaskModel task) {
+    public Task createTask(Task task) {
         return taskRepository.save(task);
     }
 
     @Override
-    public TaskModel replaceTask(Long taskId, TaskModel taskToReplace) {
+    public Task replaceTask(Long taskId, Task taskToReplace) {
         taskToReplace.setId(taskId);
         return taskRepository.save(taskToReplace);
     }

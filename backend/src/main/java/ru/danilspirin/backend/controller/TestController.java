@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.danilspirin.backend.dto.test.ReadTestDto;
 import ru.danilspirin.backend.dto.test.WriteTestDto;
-import ru.danilspirin.backend.model.enitiy.TestModel;
+import ru.danilspirin.backend.model.Test;
 import ru.danilspirin.backend.service.test.TestService;
 
 import java.net.URI;
@@ -46,7 +46,7 @@ public class TestController {
     @PostMapping
     public ResponseEntity<ReadTestDto> createTest(@RequestBody WriteTestDto testToCreate) {
         ReadTestDto createdTest = mapper.map(
-                testService.createTest(mapper.map(testToCreate, TestModel.class)),
+                testService.createTest(mapper.map(testToCreate, Test.class)),
                 ReadTestDto.class
         );
 
@@ -67,7 +67,7 @@ public class TestController {
             @RequestBody WriteTestDto testToUpdate) {
 
         ReadTestDto updatedTest = mapper.map(
-                testService.replaceTest(testId, mapper.map(testToUpdate, TestModel.class)),
+                testService.replaceTest(testId, mapper.map(testToUpdate, Test.class)),
                 ReadTestDto.class
         );
 

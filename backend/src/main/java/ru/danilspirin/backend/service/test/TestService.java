@@ -1,18 +1,18 @@
 package ru.danilspirin.backend.service.test;
 
-import ru.danilspirin.backend.model.enitiy.TestModel;
+import ru.danilspirin.backend.model.Test;
 
 import java.util.List;
 
 public interface TestService {
 
-    List<TestModel> getTestList();
+    List<Test> getTestList();
 
-    TestModel getTest(Long testId);
+    Test getTest(Long testId);
 
-    TestModel createTest(TestModel test);
+    Test createTest(Test test);
 
-    TestModel replaceTest(Long testId, TestModel testToReplace);
+    Test replaceTest(Long testId, Test testToReplace);
 
     void deleteTest(Long testId);
 }

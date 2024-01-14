@@ -1,18 +1,18 @@
 package ru.danilspirin.backend.service.task;
 
-import ru.danilspirin.backend.model.enitiy.TaskModel;
+import ru.danilspirin.backend.model.Task;
 
 import java.util.List;
 
 public interface TaskService {
 
-    List<TaskModel> getTaskList();
+    List<Task> getTaskList();
 
-    TaskModel getTask(Long taskId);
+    Task getTask(Long taskId);
 
-    TaskModel createTask(TaskModel task);
+    Task createTask(Task task);
 
-    TaskModel replaceTask(Long taskId, TaskModel taskToReplace);
+    Task replaceTask(Long taskId, Task taskToReplace);
 
     void deleteTask(Long taskId);
 }

@@ -1,7 +1,9 @@
 package ru.danilspirin.backend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.danilspirin.backend.model.enitiy.TaskModel;
+import org.springframework.stereotype.Repository;
+import ru.danilspirin.backend.model.Task;
 
-public interface TaskRepository extends JpaRepository<TaskModel, Long> {
+@Repository
+public interface TaskRepository extends JpaRepository<Task, Long> {
 }
