@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from "./MainPage.module.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import {Col, Container, Image, Row} from "react-bootstrap";
@@ -12,44 +12,32 @@ import Achievement from "./components/Achievement.jsx";
 import Possibility from "./components/Possibility/Possibility.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Footer from "../../components/BasicLink/Footer/Footer.jsx";
+import useFetch from "../../hooks/useFetch.js";
+import TournamentService from "../../api/TournamentService.js";
+import TaskService from "../../api/TaskService.js";
 
 const MainPage = (props) => {
 
-    const [tournaments, setTournaments] = useState([
-        {
-            id: "asdasdasd",
-            title: "Международная олипиада",
-            text: "Собственная международная олимпиада Университета Иннополис по профилю «Робототехника‎». Innopolis Open входит в перечень олимпиад школьников и их уровней Российского совета олимпиад школьников, утвержденный Минобрнауки.",
-        },
-        {
-            id: "asdasdasd",
-            title: "Международная олипиада",
-            text: "Собственная международная олимпиада Университета Иннополис по профилю «Робототехника‎». Innopolis Open входит в перечень олимпиад школьников и их уровней Российского совета олимпиад школьников, утвержденный Минобрнауки.",
-        },
-        {
-            id: "asdasdasd",
-            title: "Международная олипиада",
-            text: "Собственная международная олимпиада Университета Иннополис по профилю «Робототехника‎». Innopolis Open входит в перечень олимпиад школьников и их уровней Российского совета олимпиад школьников, утвержденный Минобрнауки.",
-        },
-    ]);
+    const [tournaments, setTournaments] = useState([]);
+    const [fetchTournaments, isTournamentsLoading, tournamentError] = useFetch(
+        async () => {
+            const tournaments = await TournamentService.getAll();
+            setTournaments(tournaments);
+        }
+    );
 
-    const [tasks, setTasks] = useState([
-        {
-            id: "asdas123",
-            title: "Международная олипиада",
-            text: "Собственная международная олимпиада Университета Иннополис по профилю «Робототехника‎». Innopolis Open входит в перечень олимпиад школьников и их уровней Российского совета олимпиад школьников, утвержденный Минобрнауки."
-        },
-        {
-            id: "asdas123",
-            title: "Международная олипиада",
-            text: "Собственная международная олимпиада Университета Иннополис по профилю «Робототехника‎». Innopolis Open входит в перечень олимпиад школьников и их уровней Российского совета олимпиад школьников, утвержденный Минобрнауки."
-        },
-        {
-            id: "asdas123",
-            title: "Международная олипиада",
-            text: "Собственная международная олимпиада Университета Иннополис по профилю «Робототехника‎». Innopolis Open входит в перечень олимпиад школьников и их уровней Российского совета олимпиад школьников, утвержденный Минобрнауки."
-        },
-    ])
+    const [tasks, setTasks] = useState([])
+    const [fetchTasks, isTasksLoading, taskError] = useFetch(
+        async () => {
+            const tasks = await TaskService.getAll();
+            setTasks(tasks);
+        }
+    )
+
+    useEffect(() => {
+        fetchTournaments();
+        fetchTasks();
+    }, []);
 
 
 
@@ -71,9 +59,8 @@ const MainPage = (props) => {
                     </Col>
                 </Row>
 
-                <ListPreview title={"Ближайшие турниры"}
-                             link={<BasicLink title={"ко всем соревнованиям"} href={"#соревнования"}/>}>
-                    {tournaments.map((t) => <CardPreview data={t}/>).slice(0, 3)}
+                <ListPreview title={"Ближайшие турниры"} link={<BasicLink title={"ко всем соревнованиям"} href={"#соревнования"}/>}>
+                    {tournaments.map((t) => <CardPreview data={t}/>).slice(0, 4)}
                 </ListPreview>
 
 
@@ -108,7 +95,7 @@ const MainPage = (props) => {
                 <ListPreview title={"Песочница"} link={<BasicLink title={"в песочницу"} href={"#песочница"}/>}>
                     {tasks.map(t => <CardPreview data={t} />).slice(0,3)}
                 </ListPreview>
-                <Footer/>
+                <Footer/>ы
             </Container>
         </>
     );
