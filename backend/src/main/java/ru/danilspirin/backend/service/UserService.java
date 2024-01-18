@@ -1,8 +1,6 @@
 package ru.danilspirin.backend.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.danilspirin.backend.model.User;
 import ru.danilspirin.backend.repository.UserRepository;
