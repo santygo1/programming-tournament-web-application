@@ -11,6 +11,7 @@ import java.time.LocalDate;
 public class ReadTournamentDto {
 
     Long id;
+    String text;
     String title;
     LocalDate date;
 }

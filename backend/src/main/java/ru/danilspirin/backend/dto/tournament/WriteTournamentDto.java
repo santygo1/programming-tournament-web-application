@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class WriteTournamentDto {
 
+    String text;
     String title;
     LocalDate date;
 }

@@ -25,6 +25,8 @@ public class Tournament {
 
     String title;
 
+    String text;
+
     LocalDate date;
 
     int durationMinutes;
