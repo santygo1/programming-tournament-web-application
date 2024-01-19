@@ -21,5 +21,11 @@ public class ReadTaskDto {
 
     Category category;
 
+    int timeRequirementsInMinutes;
+    int memoryRequirementsInMb;
+
+    String inputDataFormat;
+    String outputDataFormat;
+
     List<ReadTestDto> tests;
 }

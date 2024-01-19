@@ -11,4 +11,9 @@ export default class TaskService {
             });
         return response.data;
     }
+
+    static async getById(id){
+        const response = await axios.get(`/api/tasks/${id}`);
+        return response.data;
+    }
 }

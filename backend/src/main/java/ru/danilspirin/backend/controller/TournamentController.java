@@ -61,7 +61,6 @@ public class TournamentController {
                 throw new UnsupportedCategoryException();
             }
         }
-
         Sort sortRequest = Sort.unsorted();
         if (sort != null){
             switch (sort) {

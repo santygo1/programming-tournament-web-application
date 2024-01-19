@@ -4,12 +4,14 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import React from "react";
 import TournamentsPage from "./pages/TournamentsPage/TournamentsPage.jsx";
 import TasksPage from "./pages/TasksPage/TasksPage.jsx";
+import TaskIdPage from "./pages/TaskIdPage/TaskIdPage.jsx";
 
 
 const routes = [
     {path: "/", elem: <MainPage/>},
     {path: "/tournaments", elem: <TournamentsPage/>},
-    {path: "/tasks", elem: <TasksPage/>}
+    {path: "/tasks", elem: <TasksPage/>},
+    {path: "/tasks/:id", elem: <TaskIdPage />, exact: true}
 ]
 
 
@@ -21,7 +23,7 @@ function App() {
                 <Navbar/>
                 <Routes>
                     {routes.map(
-                        (r, i) => <Route key={i} path={r.path} element={r.elem}/>
+                        (r, i) => <Route key={i} path={r.path} element={r.elem} />
                     )}
                 </Routes>
             </BrowserRouter>

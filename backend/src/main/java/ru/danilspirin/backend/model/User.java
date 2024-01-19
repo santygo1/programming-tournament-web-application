@@ -26,8 +26,6 @@ public class User {
 
     String email;
 
-    String password;
-
     @Enumerated(EnumType.STRING)
     Role role;
 
@@ -39,4 +37,6 @@ public class User {
     )
     Set<Tournament> tournaments;
 
+    @OneToMany(mappedBy = "author")
+    Set<Task> tasks;
 }

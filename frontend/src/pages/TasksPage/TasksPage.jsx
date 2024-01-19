@@ -8,18 +8,20 @@ import {DefaultSortValues} from "../../components/Filter/SortValues.js";
 import TournamentPreview from "../TournamentsPage/TournamentPreview/TournamentPreview.jsx";
 import useFetch from "../../hooks/useFetch.js";
 import TournamentService from "../../api/TournamentService.js";
+import TaskService from "../../api/TaskService.js";
+import TaskPreview from "./TaskPreview/TaskPreview.jsx";
 
 const TasksPage = (props) => {
 
     const [currentTrack, setCurrentTrack] = useState("ALL");
     const [currentSort, setCurrentSort] = useState("NONE");
 
-    const [tournaments, setTournaments] = useState([]);
-    const [fetchTournaments, isTournamentsLoading, tournamentError] = useFetch(
+    const [tasks, setTasks] = useState([]);
+    const [fetchTasks, isTasksLoading, tasksError] = useFetch(
         async () => {
 
-            const tournaments = await TournamentService.getAll(currentTrack, currentSort);
-            setTournaments(tournaments);
+            const tasks = await TaskService.getAll(currentTrack, currentSort);
+            setTasks(tasks);
         }
     );
     useEffect(() => {
@@ -27,13 +29,14 @@ const TasksPage = (props) => {
     }, [currentTrack]);
 
     useEffect(() => {
-        fetchTournaments();
+        fetchTasks();
     }, [currentTrack, currentSort]);
 
+
     return (
-        <Container fluid className={["Page", classes.TournamentsPage].join(" ")} style={{gap: "10px"}}>
+        <Container className={["Page", classes.TasksPage].join(" ")} style={{gap: "10px"}}>
             <Row className={classes.body}>
-                <h1>Соревнования</h1>
+                <h1>Песочница</h1>
                 <TrackTypeSelector value={currentTrack} onSelect={(track) => setCurrentTrack(track)}/>
                 <div className={classes.filter}>
                     <PropertySelector hintText={"Сортировать"} value={currentSort}
@@ -41,9 +44,11 @@ const TasksPage = (props) => {
                                       filterValues={DefaultSortValues}/>
                 </div>
             </Row>
-            <Row className={classes.tournamentList}>
-                {tournaments.length > 0 ? tournaments.map(t => <TournamentPreview key={t.id} tournament={t}/>) :
-                    <div className={classes.nothing}>По вашему запросу ничего не найдено!</div>}
+            <Row>
+                <Container className={classes.taskGrid}>
+                    {tasks.length > 0 ? tasks.map(t => <TaskPreview key={t.id} task={t}/>) :
+                        <div className={classes.nothing}>По вашему запросу ничего не найдено!</div>}
+                </Container>
             </Row>
         </Container>
     );

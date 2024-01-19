@@ -33,7 +33,7 @@ const TournamentsPage = (props) => {
     }, [currentTrack, currentFilter, currentSort]);
 
     return (
-        <Container fluid className={["Page", classes.TournamentsPage].join(" ")} style={{gap: "10px"}}>
+        <Container className={["Page", classes.TournamentsPage].join(" ")} style={{gap: "10px"}}>
             <Row className={classes.body}>
                 <h1>Соревнования</h1>
                 <TrackTypeSelector value={currentTrack} onSelect={(track) => setCurrentTrack(track)}/>

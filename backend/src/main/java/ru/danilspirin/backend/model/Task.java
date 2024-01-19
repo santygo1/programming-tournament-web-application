@@ -27,10 +27,27 @@ public class Task {
 
     String taskCondition; // Текст для задачи
 
+    @Column(name = "time_requirements", columnDefinition = "int default 0")
+    int timeRequirementsInMinutes;
+
+    @Column(name = "memory_requirements", columnDefinition = "int default 0")
+    int memoryRequirementsInMb;
+
+    @Column(columnDefinition = "text", nullable = false)
+    String inputDataFormat;
+
+    @Column(columnDefinition = "text", nullable = false)
+    String outputDataFormat;
+
+
     @Enumerated(EnumType.STRING)
     Category category;
 
     @OneToMany(mappedBy = "task")
     List<Test> tests;
 
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    User author;
 }
