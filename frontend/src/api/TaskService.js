@@ -16,4 +16,9 @@ export default class TaskService {
         const response = await axios.get(`/api/tasks/${id}`);
         return response.data;
     }
+
+    static async getTournamentTasks(id){
+        const response = await axios.get(`/api/tournaments/${id}/tasks`)
+        return response.data;
+    }
 }

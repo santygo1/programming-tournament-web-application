@@ -14,4 +14,9 @@ export default class TournamentService{
         );
         return response.data;
     }
+
+    static async getById(id) {
+        const response = await axios.get(`/api/tournaments/${id}`);
+        return response.data;
+    }
 }

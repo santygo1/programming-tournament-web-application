@@ -52,8 +52,8 @@ public class TaskController {
         Sort sortRequest = Sort.unsorted();
         if (sort != null) {
             switch (sort) {
-                case "NAME_DESC" -> sortRequest = Sort.by("title").descending();
-                case "NAME_ASC" -> sortRequest = Sort.by("title").ascending();
+                case "NAME_DESC" -> sortRequest = Sort.by("title").ascending();
+                case "NAME_ASC" -> sortRequest = Sort.by("title").descending();
                 default -> sortRequest = Sort.unsorted();
             }
         }

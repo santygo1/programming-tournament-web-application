@@ -4,11 +4,13 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.danilspirin.backend.dto.FilterRequest;
+import ru.danilspirin.backend.dto.task.ReadTaskDto;
 import ru.danilspirin.backend.dto.tournament.ReadTournamentDto;
 import ru.danilspirin.backend.dto.tournament.WriteTournamentDto;
 import ru.danilspirin.backend.exception.UnsupportedCategoryException;
@@ -28,7 +30,7 @@ public class TournamentController {
     final TournamentServiceImpl tournamentService;
     final ModelMapper mapper;
 
-    public TournamentController(TournamentServiceImpl tournamentService, ModelMapper mapper) {
+    public TournamentController(TournamentServiceImpl tournamentService, @Qualifier("tournamentModelMapper")ModelMapper mapper) {
         this.tournamentService = tournamentService;
         this.mapper = mapper;
     }
@@ -64,8 +66,8 @@ public class TournamentController {
         Sort sortRequest = Sort.unsorted();
         if (sort != null){
             switch (sort) {
-                case "NAME_DESC" -> sortRequest = Sort.by("title").descending();
-                case "NAME_ASC" -> sortRequest = Sort.by("title").ascending();
+                case "NAME_DESC" -> sortRequest = Sort.by("title").ascending();
+                case "NAME_ASC" -> sortRequest = Sort.by("title").descending();
                 default -> sortRequest = Sort.unsorted();
             }
         }
@@ -103,6 +105,14 @@ public class TournamentController {
         return ResponseEntity
                 .created(location)
                 .body(createdTournament);
+    }
+
+    @GetMapping("/{tournamentId}/tasks")
+    public ResponseEntity<Iterable<ReadTaskDto>> getTournamentTaskList(@PathVariable Long tournamentId){
+        Iterable<ReadTaskDto> list = tournamentService.getTournamentTasksList(tournamentId).stream()
+                .map(r -> mapper.map(r, ReadTaskDto.class)).toList();
+
+        return ResponseEntity.ok(list);
     }
 
     @PutMapping("/{tournamentId}")

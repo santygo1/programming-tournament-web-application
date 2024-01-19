@@ -1,0 +1,30 @@
+.TaskPreview {
+    background: #363648;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all ease .3s;
+}
+
+.TaskPreview:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    background: #44455b;
+}
+
+.TaskPreview:hover > .title{
+    color: #50c3a0;
+}
+
+.requirements{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+}
+
+.arrowCell{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

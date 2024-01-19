@@ -3,6 +3,7 @@ package ru.danilspirin.backend.service.tournament;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import ru.danilspirin.backend.model.Task;
 import ru.danilspirin.backend.model.records.Category;
 import ru.danilspirin.backend.dto.FilterRequest;
 import ru.danilspirin.backend.exception.tournament.TournamentNotFoundException;
@@ -13,6 +14,7 @@ import ru.danilspirin.backend.repository.TournamentSpecifications;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Service
@@ -28,6 +30,11 @@ public class TournamentServiceImpl implements TournamentService {
     @Override
     public List<Tournament> getTournamentList() {
         return tournamentRepository.findAll();
+    }
+
+    @Override
+    public Set<Task> getTournamentTasksList(Long tournamentId) {
+        return getTournament(tournamentId).getTasks();
     }
 
     public List<Tournament> getTournamentList(Optional<Category> category, Optional<FilterRequest> filter, Sort sort) {

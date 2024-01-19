@@ -57,3 +57,10 @@ h3{
     color: white;
     box-shadow: none;
 }
+
+.button-with-icon{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}

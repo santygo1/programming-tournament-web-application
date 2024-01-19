@@ -1,0 +1,14 @@
+.TournamentIdPage {
+}
+
+.capsule{
+    border-radius: 10px;
+    background-color: #282934;
+    padding: 20px;
+}
+
+.tasksList{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

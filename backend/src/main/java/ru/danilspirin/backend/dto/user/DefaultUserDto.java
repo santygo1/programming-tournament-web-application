@@ -9,6 +9,5 @@ import ru.danilspirin.backend.model.Role;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DefaultUserDto {
     Long id;
-    Role role;
     String username;
 }

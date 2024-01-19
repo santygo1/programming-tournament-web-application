@@ -29,24 +29,31 @@ function getImageForCategory(category) {
     }
 }
 
-const TournamentPreview = ({tournament}) => {
+const TournamentPreview = ({tournament, clickable=true}) => {
     return (
-        <div className={classes.TournamentPreview} style={{backgroundImage: "linear-gradient( rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.7) 0% )," + `url(${getImageForCategory(tournament.category)})`}}>
+        <div className={classes.TournamentPreview}
+             style={{backgroundImage: "linear-gradient( rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.7) 0% )," + `url(${getImageForCategory(tournament.category)})`}}>
             <div className={classes.header}>
                 <div>
                     <span style={{
                         backgroundColor: tournament.category === null ? "gray" : TrackValues[tournament.category].color
-                    }} className={classes.tag}>
+                    }}
+                          className={classes.tag}>
                         {tournament.category === null ? "Вне категории" : TrackValues[tournament.category].text}
                     </span>
                 </div>
                 <div>
                     <span className={classes.tag}>Дата начала: {tournament.startDate}</span>
                     <span className={classes.tag}>Дата окончания: {tournament.finishDate}</span>
+                    {tournament.finished && <span className={classes.tag} style={{backgroundColor:"#a73045"}}>Турнир закончился</span>}
                 </div>
             </div>
             <div className={classes.body}>
-                <Link to={"/tournaments/" + tournament.id} className={classes.title}>{tournament.title}</Link>
+                {clickable ?
+                <Link to={"/tournaments/" + tournament.id} className={classes.title}>{tournament.title}</Link>:
+                    <div className={classes.title}>{tournament.title} </div>
+
+                }
                 <div className={classes.description}>{tournament.text}</div>
             </div>
         </div>

@@ -29,6 +29,8 @@
 
 .title {
     font-size: 4em;
+    margin-bottom: 20px;
+    line-height: 0.9;
     font-weight: 900;
     text-transform: none;
     text-decoration: none;
@@ -42,6 +44,7 @@
 .tag {
     background: #5e5c74;
     padding: 2px 7px;
+    font-size: 0.9em;
     border-radius: 10px;
 }
 

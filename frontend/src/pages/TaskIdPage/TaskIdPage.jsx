@@ -8,34 +8,29 @@ import {faClock, faMemory} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {TrackValues} from "../../components/TrackTypeSelector/TrackValues.js";
 import UserService from "../../api/UserService.js";
+import UserAvatar from "../../components/UserAvatar/UserAvatar.jsx";
 
 const TaskIdPage = (props) => {
     const params = useParams();
     const [task, setTask] = useState({});
-    const [fetchTask, isTaskLoading, taskError] = useFetch(
+    const [author, setAuthor] = useState({});
+    const [fetchTaskAndUser, isLoading, error] = useFetch(
         async () => {
             const task = await TaskService.getById(params.id);
             setTask(task);
+            const user = await UserService.getById(task.authorId);
+            setAuthor(user);
         }
     );
-    const [fetchUser, isUserLoading, userError] = useFetch(
-        async () => {
-            const user = await UserService.getById(task.get);
-        }
-    )
-
-    const [author, setAuthor] = useState({});
-
 
     useEffect(() => {
-        fetchTask();
-
+        fetchTaskAndUser();
     }, []);
 
 
     return (
         <Container fluid className={["Page", classes.TaskIdPage].join(" ")}>
-            <Row className={classes.gap} >
+            <Row className={classes.gap}>
                 <Row className={[classes.head, classes.capsule].join(" ")}>
                     <div
                         style={{
@@ -43,8 +38,16 @@ const TaskIdPage = (props) => {
                         }}
                         className={classes.tag}
                     >{task.category ? TrackValues[task.category].text : "Вне категории"}</div>
-                    <h2>{task.title}</h2>
-                    <p>Всего тестов: {task.tests ? task.tests.length : 0}</p>
+                    <Row>
+                        <Col>
+                            <h2>{task.title}</h2>
+                            <p>Всего тестов: {task.tests ? task.tests.length : 0}</p>
+                        </Col>
+                        <Col md={2} className={classes.author}>
+                            <span style={{marginRight: "10px"}}>Автор:</span>
+                            <UserAvatar user={author}/>
+                        </Col>
+                    </Row>
                 </Row>
                 <Row className={classes.gap}>
                     <Col>
@@ -81,10 +84,10 @@ const TaskIdPage = (props) => {
                                 <h5>Формат выходных данных</h5>
                                 <div>{task.outputDataFormat}</div>
                             </Row>
-                            {task.tests && <Row className={classes.capsule}>
+                            {(task.tests && task.tests.length > 0) && <Row className={classes.capsule}>
                                 {
                                     task.tests.map((test, index) =>
-                                        <Accordion>
+                                        <Accordion key={test.id}>
                                             <Accordion.Item eventKey={index}>
                                                 <Accordion.Header>Тест #{index + 1}</Accordion.Header>
                                                 <Accordion.Body>
@@ -119,6 +122,6 @@ const TaskIdPage = (props) => {
             </Row>
         </Container>
     );
-                            };
+};
 
 export default TaskIdPage;

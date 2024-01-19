@@ -16,5 +16,6 @@ public class ReadTournamentDto {
     String title;
     LocalDate startDate;
     LocalDate finishDate;
+    boolean isFinished;
     Category category;
 }

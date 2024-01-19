@@ -25,6 +25,13 @@
     background-color: #5e5c74;
 }
 
+.author{
+    display: flex;
+    justify-content: flex-end;
+    color: #a9a9ae;
+    align-items: center;
+}
+
 .requirements{
     display: flex;
     justify-content: end;
