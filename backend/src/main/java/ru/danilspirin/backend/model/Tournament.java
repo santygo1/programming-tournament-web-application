@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Type;
+import ru.danilspirin.backend.model.records.Category;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -23,14 +25,20 @@ public class Tournament {
     @Id
     Long id;
 
+    @Column(nullable = false)
     String title;
 
+    @Column(length = 65535,columnDefinition="Text")
     String text;
 
-    LocalDate date;
+    @Column(nullable = false)
+    LocalDate startDate;
 
-    int durationMinutes;
+    @Column(nullable = false)
+    LocalDate finishDate;
 
+    @Enumerated(EnumType.STRING)
+    Category category;
 
     @ManyToMany(mappedBy = "tournaments")
     Set<User> users;

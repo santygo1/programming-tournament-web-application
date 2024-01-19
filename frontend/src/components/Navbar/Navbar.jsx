@@ -3,6 +3,8 @@ import {Container, Nav, Navbar as BNavbar} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTerminal} from "@fortawesome/free-solid-svg-icons";
 import classes from "./Navbar.module.css";
+import {Link} from "react-router-dom";
+import "bootstrap"
 
 const Navbar = (props) => {
 
@@ -10,16 +12,14 @@ const Navbar = (props) => {
     return (
         <BNavbar variant={"dark"} className={classes.Navbar} fixed={"top"}>
             <Container>
-                <BNavbar.Brand href="#home">
+                <Link className={"navbar-brand"} to={"/"}>
                     <FontAwesomeIcon icon={faTerminal}/>{' '}
                     all cups
-                </BNavbar.Brand>
+                </Link>
 
                 <Nav className="me-auto">
-                    <Nav.Link href="#tournaments">Соревнования</Nav.Link>
-                    <Nav.Link href="#sand">Песочница</Nav.Link>
-                    <Nav.Link href="#results">Результаты</Nav.Link>
-                    <Nav.Link href="#battles">Битвы</Nav.Link>
+                    <Link className={"nav-link"} to={"/tournaments"}>Соревнования</Link>
+                    <Link className={"nav-link"} to={"/tasks"}>Песочница</Link>
                 </Nav>
 
                 <Nav>

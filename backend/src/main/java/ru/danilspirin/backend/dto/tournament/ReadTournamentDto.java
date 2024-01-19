@@ -3,6 +3,7 @@ package ru.danilspirin.backend.dto.tournament;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
+import ru.danilspirin.backend.model.records.Category;
 
 import java.time.LocalDate;
 
@@ -13,5 +14,7 @@ public class ReadTournamentDto {
     Long id;
     String text;
     String title;
-    LocalDate date;
+    LocalDate startDate;
+    LocalDate finishDate;
+    Category category;
 }

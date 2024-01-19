@@ -1,10 +1,18 @@
 package ru.danilspirin.backend.service.task;
 
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import ru.danilspirin.backend.dto.FilterRequest;
 import ru.danilspirin.backend.exception.task.TaskNotFoundException;
 import ru.danilspirin.backend.model.Task;
+import ru.danilspirin.backend.model.Tournament;
+import ru.danilspirin.backend.model.records.Category;
 import ru.danilspirin.backend.repository.TaskRepository;
+import ru.danilspirin.backend.repository.TaskSpecifications;
+import ru.danilspirin.backend.repository.TournamentSpecifications;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +30,12 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> getTaskList() {
         return taskRepository.findAll();
+    }
+
+    public List<Task> getTaskList(Optional<Category> category, Sort sort) {
+        Specification<Task> spec = Specification.where(TaskSpecifications.findByCategory(category));
+
+        return taskRepository.findAll(spec, sort);
     }
 
     @Override

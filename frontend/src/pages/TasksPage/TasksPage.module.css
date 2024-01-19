@@ -1,0 +1,17 @@
+.TasksPage {
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.filter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nothing{
+    text-align: center;
+}

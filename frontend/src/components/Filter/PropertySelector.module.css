@@ -1,0 +1,22 @@
+.PropertySelector {
+    display: flex;
+    gap: 10px;
+}
+
+.hint, .key{
+    color: #9192ac;
+    font-weight: 500;
+}
+
+.key{
+    transition: all ease .3s;
+    text-transform: lowercase;
+}
+.key:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.key.active{
+    color: white;
+}

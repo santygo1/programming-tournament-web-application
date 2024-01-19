@@ -1,0 +1,47 @@
+.TournamentPreview {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    padding: 60px;
+    border-radius: 20px;
+    height: 400px;
+    gap: 20px;
+}
+.TournamentPreview > * {
+    margin: 0 40px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.header > * {
+    display: flex;
+    gap: 10px;
+}
+
+.title {
+    font-size: 4em;
+    font-weight: 900;
+    text-transform: none;
+    text-decoration: none;
+    color: white;
+}
+.description{
+    color: #c4b8cb;
+    margin-left: 5px;
+}
+
+.tag {
+    background: #5e5c74;
+    padding: 2px 7px;
+    border-radius: 10px;
+}
+

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./MainPage.module.css";
-import Navbar from "../../components/Navbar/Navbar.jsx";
 import {Col, Container, Image, Row} from "react-bootstrap";
 import highload from "../../assets/highload.png"
 import proc from "../../assets/proc.png"
@@ -40,10 +39,8 @@ const MainPage = (props) => {
     }, []);
 
 
-
     return (
         <>
-            <Navbar/>
             <Container fluid className={[classes.MainPage, "Page"].join(" ")}>
                 <Row className={classes.welcome}>
                     <Col className={classes.info}>
@@ -59,8 +56,9 @@ const MainPage = (props) => {
                     </Col>
                 </Row>
 
-                <ListPreview title={"Ближайшие турниры"} link={<BasicLink title={"ко всем соревнованиям"} href={"#соревнования"}/>}>
-                    {tournaments.map((t) => <CardPreview data={t}/>).slice(0, 4)}
+                <ListPreview title={"Ближайшие турниры"}
+                             link={<BasicLink title={"ко всем соревнованиям"} href={"/tournaments"}/>}>
+                    {tournaments.map((t) => <CardPreview key={t.id} data={t}/>).slice(0, 4)}
                 </ListPreview>
 
 
@@ -92,10 +90,10 @@ const MainPage = (props) => {
                     </Container>
                 </Row>
 
-                <ListPreview title={"Песочница"} link={<BasicLink title={"в песочницу"} href={"#песочница"}/>}>
-                    {tasks.map(t => <CardPreview data={t} />).slice(0,3)}
+                <ListPreview title={"Песочница"} link={<BasicLink title={"в песочницу"} href={"/tasks"}/>}>
+                    {tasks.map(t => <CardPreview key={t.id} data={t}/>).slice(0, 3)}
                 </ListPreview>
-                <Footer/>ы
+                <Footer/>
             </Container>
         </>
     );

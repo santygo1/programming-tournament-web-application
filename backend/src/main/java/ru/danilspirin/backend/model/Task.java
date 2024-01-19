@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
+import ru.danilspirin.backend.model.records.Category;
+
+import java.util.List;
 
 @Entity
 @Table(name = "task")
@@ -23,5 +26,11 @@ public class Task {
     String title;
 
     String taskCondition; // Текст для задачи
+
+    @Enumerated(EnumType.STRING)
+    Category category;
+
+    @OneToMany(mappedBy = "task")
+    List<Test> tests;
 
 }

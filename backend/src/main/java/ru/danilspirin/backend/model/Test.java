@@ -24,6 +24,7 @@ public class Test {
 
     String output;
 
+    @ToString.Exclude
     @JoinColumn(name = "task_id")
     @ManyToOne
     Task task;
