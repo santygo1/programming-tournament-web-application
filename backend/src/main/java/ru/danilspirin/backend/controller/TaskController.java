@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class TaskController {
     final TaskServiceImpl taskService;
     final ModelMapper mapper;
 
-    public TaskController(TaskServiceImpl taskService, ModelMapper mapper) {
+    public TaskController(TaskServiceImpl taskService,@Qualifier("taskModelMapper") ModelMapper mapper) {
         this.taskService = taskService;
         this.mapper = mapper;
     }
