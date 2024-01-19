@@ -33,7 +33,6 @@ public class UserController {
             @RequestHeader(name= "x-authorized-user", required = false) Long authUserId) {
         DefaultUserDto user;
 
-        log.info("{}", authUserId);
         // убрал авторизацию, для этого такой костыль
         if (authUserId != null && Objects.equals(userId, authUserId)) {
             user = mapper.map(userService.getUserById(userId), AuthorizedUserDto.class);
