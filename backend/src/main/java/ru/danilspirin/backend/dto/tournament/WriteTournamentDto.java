@@ -6,6 +6,8 @@ import lombok.experimental.FieldDefaults;
 import ru.danilspirin.backend.model.records.Category;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -13,7 +15,8 @@ public class WriteTournamentDto {
 
     String text;
     String title;
-    LocalDate startDate;
-    LocalDate finishDate;
+    LocalDateTime startDate;
+    LocalDateTime finishDate;
     Category category;
+    List<Long> tasks;
 }

@@ -11,6 +11,7 @@ import ru.danilspirin.backend.model.Task;
 import ru.danilspirin.backend.model.Tournament;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Configuration
 public class MappingConfig {
@@ -22,15 +23,6 @@ public class MappingConfig {
     }
 
     @Bean
-    public ModelMapper taskModelMapper(){
-         var mapper = new ModelMapper();
-         mapper.typeMap(Task.class, ReadTaskDto.class)
-                .addMappings(mapping -> mapping.map(src -> src.getAuthor().getId(), ReadTaskDto::setAuthorId));
-
-        return mapper;
-    }
-
-    @Bean
     public ModelMapper tournamentModelMapper(){
         var mapper = new ModelMapper();
         mapper.typeMap(Tournament.class, ReadTournamentDto.class)
@@ -39,7 +31,7 @@ public class MappingConfig {
                     Tournament source = context.getSource();
                     ReadTournamentDto destination = context.getDestination();
 
-                    destination.setFinished((LocalDate.now().isAfter(source.getFinishDate()) || LocalDate.now().isEqual(source.getFinishDate())));
+                    destination.setFinished((LocalDateTime.now().isAfter(source.getFinishDate()) || LocalDateTime.now().isEqual(source.getFinishDate())));
 
                     return context.getDestination();
                 });

@@ -10,6 +10,7 @@ import org.hibernate.annotations.Type;
 import ru.danilspirin.backend.model.records.Category;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Table(name = "tournament")
@@ -32,10 +33,10 @@ public class Tournament {
     String text;
 
     @Column(nullable = false)
-    LocalDate startDate;
+    LocalDateTime startDate;
 
     @Column(nullable = false)
-    LocalDate finishDate;
+    LocalDateTime finishDate;
 
     @Enumerated(EnumType.STRING)
     Category category;

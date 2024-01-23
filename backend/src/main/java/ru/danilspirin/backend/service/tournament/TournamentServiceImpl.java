@@ -1,5 +1,6 @@
 package ru.danilspirin.backend.service.tournament;
 
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import ru.danilspirin.backend.model.records.Category;
 import ru.danilspirin.backend.dto.FilterRequest;
 import ru.danilspirin.backend.exception.tournament.TournamentNotFoundException;
 import ru.danilspirin.backend.model.Tournament;
+import ru.danilspirin.backend.repository.TaskRepository;
 import ru.danilspirin.backend.repository.TournamentRepository;
 import ru.danilspirin.backend.repository.TournamentSpecifications;
 
@@ -21,9 +23,11 @@ import java.util.Set;
 public class TournamentServiceImpl implements TournamentService {
 
     private final TournamentRepository tournamentRepository;
+    private final TaskRepository taskRepository;
 
-    public TournamentServiceImpl(TournamentRepository tournamentRepository) {
+    public TournamentServiceImpl(TournamentRepository tournamentRepository, TaskRepository taskRepository) {
         this.tournamentRepository = tournamentRepository;
+        this.taskRepository = taskRepository;
     }
 
 
@@ -50,6 +54,13 @@ public class TournamentServiceImpl implements TournamentService {
             };
         }
         return tournamentRepository.findAll(spec, sort);
+    }
+
+    @Transactional
+    public Tournament setTasks(Tournament tournament, List<Long> taskIds){
+        Set<Task> tasks = taskRepository.getAllByIdIn(taskIds);
+        tournament.setTasks(tasks);
+        return tournamentRepository.save(tournament);
     }
 
 

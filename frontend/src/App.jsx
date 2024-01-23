@@ -6,6 +6,7 @@ import TournamentsPage from "./pages/TournamentsPage/TournamentsPage.jsx";
 import TasksPage from "./pages/TasksPage/TasksPage.jsx";
 import TaskIdPage from "./pages/TaskIdPage/TaskIdPage.jsx";
 import TournamentIdPage from "./pages/TournamentIdPage/TournamentIdPage.jsx";
+import TournamentCreateFormPage from "./pages/TournamentCreateFormPage/TournamentCreateFormPage.jsx";
 
 
 const routes = [
@@ -13,7 +14,8 @@ const routes = [
     {path: "/tournaments", elem: <TournamentsPage/>},
     {path: "/tasks", elem: <TasksPage/>},
     {path: "/tasks/:id", elem: <TaskIdPage/>, exact: true},
-    {path: "/tournaments/:id", elem: <TournamentIdPage/> , exact: true}
+    {path: "/tournaments/:id", elem: <TournamentIdPage/> , exact: true},
+    {path: "/tournaments/create", elem: <TournamentCreateFormPage />}
 ]
 
 localStorage.setItem("userId", "1"); // id авторизованного пользователя

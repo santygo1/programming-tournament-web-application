@@ -30,7 +30,7 @@ public class TaskController {
     final TaskServiceImpl taskService;
     final ModelMapper mapper;
 
-    public TaskController(TaskServiceImpl taskService,@Qualifier("taskModelMapper") ModelMapper mapper) {
+    public TaskController(TaskServiceImpl taskService, ModelMapper mapper) {
         this.taskService = taskService;
         this.mapper = mapper;
     }
@@ -57,8 +57,6 @@ public class TaskController {
                 default -> sortRequest = Sort.unsorted();
             }
         }
-
-        log.info("Тесты для 1: {}", taskService.getTaskList().getFirst().getTests());
 
         Iterable<ReadTaskDto> list = taskService.getTaskList(Optional.ofNullable(category), sortRequest).stream()
                 .map(r -> mapper.map(r, ReadTaskDto.class)).toList();

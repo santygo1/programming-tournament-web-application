@@ -45,7 +45,7 @@ const MainPage = (props) => {
                 <Row className={classes.welcome}>
                     <Col className={classes.info}>
                         <div>
-                            <h1>all cups</h1>
+                            <h1>CodeRise</h1>
                             <h3 className={"thin"}>IT-Соревнования для специалистов и начинающих</h3>
                         </div>
                         <p style={{width: "50%"}}>Решай креативные задачи, обменивайся опытом, открывай новые

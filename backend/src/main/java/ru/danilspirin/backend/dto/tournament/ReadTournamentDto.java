@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 import ru.danilspirin.backend.model.records.Category;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -14,8 +15,9 @@ public class ReadTournamentDto {
     Long id;
     String text;
     String title;
-    LocalDate startDate;
-    LocalDate finishDate;
+    LocalDateTime startDate;
+    LocalDateTime finishDate;
     boolean isFinished;
     Category category;
+
 }

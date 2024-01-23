@@ -19,4 +19,15 @@ export default class TournamentService{
         const response = await axios.get(`/api/tournaments/${id}`);
         return response.data;
     }
+
+    static async createTournament(tournament){
+        const response = await axios.post(
+            "/api/tournaments",
+            tournament, {
+            headers:{
+                "x-authorized-user": localStorage.getItem("userId")
+            }
+        })
+        return response.data;
+    }
 }

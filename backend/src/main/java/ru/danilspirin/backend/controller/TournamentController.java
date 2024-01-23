@@ -84,15 +84,18 @@ public class TournamentController {
     @GetMapping("/{tournamentId}")
     public ResponseEntity<ReadTournamentDto> getTournamentById(@PathVariable Long tournamentId) {
         ReadTournamentDto tournament = mapper.map(tournamentService.getTournament(tournamentId), ReadTournamentDto.class);
-
         return ResponseEntity.ok(tournament);
     }
 
 
     @PostMapping
-    public ResponseEntity<ReadTournamentDto> createTournament(@RequestBody WriteTournamentDto tournamentToCreate) {
+    public ResponseEntity<ReadTournamentDto> createTournament(@RequestBody WriteTournamentDto tournamentToCreate,
+                                                              @RequestHeader(name = "x-authorized-user") Long id) {
+
+        Tournament tournament = tournamentService.createTournament(mapper.map(tournamentToCreate, Tournament.class));
+        tournament = tournamentService.setTasks(tournament, tournamentToCreate.getTasks());
         ReadTournamentDto createdTournament = mapper.map(
-                tournamentService.createTournament(mapper.map(tournamentToCreate, Tournament.class)),
+                tournament,
                 ReadTournamentDto.class
         );
 

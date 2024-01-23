@@ -1,0 +1,62 @@
+.TwoSideMultiSelect {
+    height: 500px;
+}
+
+.title {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px !important;
+    border-radius: 20px;
+    gap: 5px;
+    background: rgba(0, 0, 0, 25%);
+    overflow-y:auto;
+}
+
+.listItem {
+    display: flex;
+    background-color: #44455b;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px 15px;
+    transition: all ease .2s;
+}
+
+.listItem:hover {
+    background-color: #353647;
+    color: #50c3a0;
+    cursor: pointer;
+}
+
+.previewButton{
+    color: white;
+    transition: all ease .3s;
+}
+
+.previewButton:hover{
+    color: #50c3a0;
+    transform: scale(1.2);
+}
+
+.hint{
+    color: #5e5c74;
+    text-align: center;
+}
+
+.search{
+    display: flex;
+    gap: 30%;
+}
+
+.buttons{
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}

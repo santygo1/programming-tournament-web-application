@@ -45,9 +45,4 @@ public class Task {
 
     @OneToMany(mappedBy = "task")
     List<Test> tests;
-
-    @ToString.Exclude
-    @ManyToOne
-    @JoinColumn(name = "author_id")
-    User author;
 }

@@ -1,0 +1,57 @@
+.CategorySelect{
+    padding: 0 !important;
+}
+
+.CategorySelect input{
+    display: none;
+}
+
+.CategorySelect label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.CategorySelect label:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+    z-index: 1;
+}
+
+.CategorySelect label img {
+    height: 50px;
+    width: 50px;
+    transition-duration: 0.3s;
+    transform-origin: 50% 50%;
+}
+
+.CategorySelect :checked + label {
+    border-color: #ddd;
+    border-radius: 50%;
+}
+
+.CategorySelect :checked + label:before {
+    content: "✓";
+    background-color: #4bc3a0;
+    line-height: 24px;
+    transform: scale(1);
+}
+
+.CategorySelect :checked + label img {
+    transform: scale(0.9);
+    /* box-shadow: 0 0 5px #333; */
+    z-index: -1;
+}

@@ -3,6 +3,33 @@ body{
     color: white;
 }
 
+
+:root{
+    --scrollbar-bg-color: #20212c;
+    --scrollbar-border-radius: 20px;
+    --scrollbar-thumb-bg-color: #5c86f0;
+    --scrollbar-thumb-hover-color: #38508f;
+    --scrollbar-thumb-active-color: #678;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    background-color: var(--scrollbar-bg-color);
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: var(--scrollbar-border-radius);
+    background-color: var(--scrollbar-thumb-bg-color);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover-color);
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background-color: var(--scrollbar-thumb-active-color);
+}
+
 h1{
     font-size: 5em;
 }
@@ -63,4 +90,21 @@ h3{
     gap: 5px;
     align-items: center;
     justify-content: center;
+}
+
+.capsule{
+    border-radius: 10px;
+    background-color: #282934;
+    padding: 20px;
+}
+
+.page-title{
+    margin-top: 20px !important;
+    margin-bottom: 10px;
+    font-size: 2.6em;
+}
+
+.modal-content{
+    background-image: radial-gradient(circle, #29253f, #1f2029);
+    color: white;
 }

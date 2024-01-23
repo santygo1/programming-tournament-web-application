@@ -1,32 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import classes from "./TaskIdPage.module.css";
-import {useParams} from "react-router-dom";
-import useFetch from "../../hooks/useFetch.js";
-import TaskService from "../../api/TaskService.js";
+import React from 'react';
+import classes from "./TaskPreview.module.css";
 import {Accordion, Col, Container, Row} from "react-bootstrap";
-import {faClock, faMemory} from "@fortawesome/free-solid-svg-icons";
+import {TrackValues} from "../../../components/TrackTypeSelector/TrackValues.js";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {TrackValues} from "../../components/TrackTypeSelector/TrackValues.js";
-import UserService from "../../api/UserService.js";
-import UserAvatar from "../../components/UserAvatar/UserAvatar.jsx";
+import {faClock, faMemory} from "@fortawesome/free-solid-svg-icons";
 
-const TaskIdPage = (props) => {
-    const params = useParams();
-    const [task, setTask] = useState({});
-    const [fetchTask, isLoading, error] = useFetch(
-        async () => {
-            const task = await TaskService.getById(params.id);
-            setTask(task);
-        }
-    );
-
-    useEffect(() => {
-        fetchTask();
-    }, []);
-
-
+const TaskPreview = ({task}) => {
     return (
-        <Container fluid className={["Page", classes.TaskIdPage].join(" ")}>
+        <Container fluid className={["Page", classes.TaskPreview].join(" ")}>
             <Row className={classes.gap}>
                 <Row className={[classes.head, classes.capsule].join(" ")}>
                     <div
@@ -117,4 +98,4 @@ const TaskIdPage = (props) => {
     );
 };
 
-export default TaskIdPage;
+export default TaskPreview;

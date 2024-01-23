@@ -33,10 +33,11 @@ const TasksPage = (props) => {
     }, [currentTrack, currentSort]);
 
 
+
     return (
         <Container className={["Page", classes.TasksPage].join(" ")} style={{gap: "10px"}}>
             <Row className={classes.body}>
-                <h1>Песочница</h1>
+                <h1 className={"page-title"}>Песочница</h1>
                 <TrackTypeSelector value={currentTrack} onSelect={(track) => setCurrentTrack(track)}/>
                 <div className={classes.filter}>
                     <PropertySelector hintText={"Сортировать"} value={currentSort}

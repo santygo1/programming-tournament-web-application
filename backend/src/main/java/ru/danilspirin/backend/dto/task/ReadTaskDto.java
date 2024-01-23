@@ -26,8 +26,6 @@ public class ReadTaskDto {
 
     String inputDataFormat;
     String outputDataFormat;
-    
-    Long authorId;
 
     List<ReadTestDto> tests;
 }

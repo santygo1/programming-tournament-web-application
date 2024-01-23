@@ -1,7 +1,8 @@
 spring:
   profiles:
     active: dev
-
+  jackson:
+    date-format: yyyy-MM-dd'T'HH:mm:ss
 server:
   servlet:
     context-path: /api

@@ -36,7 +36,4 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "tournament_id")
     )
     Set<Tournament> tournaments;
-
-    @OneToMany(mappedBy = "author")
-    Set<Task> tasks;
 }

@@ -14,7 +14,7 @@ const Navbar = (props) => {
             <Container>
                 <Link className={"navbar-brand"} to={"/"}>
                     <FontAwesomeIcon icon={faTerminal}/>{' '}
-                    all cups
+                    {"CodeRise"}
                 </Link>
 
                 <Nav className="me-auto">

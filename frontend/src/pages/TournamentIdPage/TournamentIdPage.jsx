@@ -17,7 +17,6 @@ const TournamentIdPage = () => {
 
     const [fetchTournamentAndTasks, isLoading, error] = useFetch(
         async () => {
-            console.log("asasd")
             const tournament = await TournamentService.getById(params.id);
             setTournament(tournament);
             const tasks = await TaskService.getTournamentTasks(params.id);
@@ -36,9 +35,9 @@ const TournamentIdPage = () => {
                     <TournamentPreview tournament={tournament} clickable={false}/>
                     {tasks.length > 0 ?
                         <Row className={classes.capsule}>
-                            <h4 style={{marginBottom: "20px"}}>Задачи</h4>
+                            <h4 style={{marginBottom: "20px"}} >Задачи</h4>
                             <div className={classes.tasksList}>
-                                {tasks.map(task => <TournamentTaskPreview task={task} />)}
+                                {tasks.map(task => <TournamentTaskPreview key={task.id}task={task} />)}
                             </div>
                         </Row>:
                         <Row className={classes.capsule}> На данный момент задания отсутствуют!</Row>

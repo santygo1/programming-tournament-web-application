@@ -12,8 +12,10 @@ import UserService from "../../api/UserService.js";
 import {CAN_CREATE_TOURNAMENTS} from "../../api/auth.js";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAdd, faEdit} from "@fortawesome/free-solid-svg-icons";
+import {useNavigate} from "react-router-dom";
 
 const TournamentsPage = (props) => {
+    const navigator = useNavigate();
 
     const [user, setUser] = useState(null);
     const [fetchUser, isUserLoading, userError] = useFetch(
@@ -50,9 +52,9 @@ const TournamentsPage = (props) => {
         <Container className={["Page", classes.TournamentsPage].join(" ")} style={{gap: "10px"}}>
             <Row className={classes.body}>
                 <div className={classes.title}>
-                    <h1>Соревнования</h1>
+                    <h1 className={"page-title"}>Соревнования</h1>
                     {(user && CAN_CREATE_TOURNAMENTS[user.role]) &&
-                        <Button className={"button-with-icon"} variant={"outline-danger"}>Создать<FontAwesomeIcon icon={faAdd}/></Button>}
+                        <Button onClick={() => navigator("/tournaments/create")} className={"button-with-icon"} variant={"outline-danger"}>Добавить<FontAwesomeIcon icon={faAdd}/></Button>}
                 </div>
                 <TrackTypeSelector value={currentTrack} onSelect={(track) => setCurrentTrack(track)}/>
                 <div className={classes.filter}>
